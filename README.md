@@ -3,7 +3,7 @@ Hello there,
 I've created a self-hosted discord bot that can be used to manage your Roblox moderation needs while you're offline. Yes, I've taken inspiration and recreated this bot, however, I've made sure to update it, clean up, and bring some new features to the project. The project I initial took inspiration from was
 
 > **Showcase Video**
-![2022-10-24_22-33-09.mkv-vimeo-763652741-hls-akfire_interconnect_quic_sep-923|video](https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/d/f/d/dfd047f4c55515478c68b58ae4c2cdebca6adaaf.mp4
+[![Showcase](https://res.cloudinary.com/marcomontalbano/image/upload/v1666741461/video_to_markdown/images/video--c7b73e8c1cc4d2c5b0f7fecaffc557e0-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/d/f/d/dfd047f4c55515478c68b58ae4c2cdebca6adaaf.mp4 "Showcase")
 
 
 > **How does it work?**
