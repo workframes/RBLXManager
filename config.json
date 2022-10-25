@@ -1,6 +1,16 @@
 {
     "CLIENT": {
         "TOKEN": "",
-        "PREFIX": "."
+        "PREFIX": ";"
+    },
+
+    "GUILD_ID": "",
+     
+    "GAME": {
+        "DATASTORE_NAME": "RBLXManagerBans",
+        "UNIVERSE_ID": 0,
+        "DATASTORE_API_KEY": "",
+        "BAN_MESSAGE": "Hello, you have been banned permentaly. If you think this was a mistake please contact a moderator to apeal.",
+        "KICK_MESSAGE": "Hello, you have been kicked from the server."
     }
 }
