@@ -1,7 +1,9 @@
 const { Client, GatewayIntentBits,  Collection} = require('discord.js');
 const { Datastore, Messager } = require('./util/Cloud');
 const { CLIENT, GAME } = require('./config.json');
+
 require('better-logging')(console)
+require('dotenv').config()
 
 const _CLIENT = {
     client: new Client({
@@ -13,8 +15,8 @@ const _CLIENT = {
         ]
     }),
     prefix: CLIENT.PREFIX,
-    banData: new Datastore(GAME.DATASTORE_API_KEY, GAME.UNIVERSE_ID),
-    messager: new Messager(GAME.DATASTORE_API_KEY, GAME.UNIVERSE_ID)
+    banData: new Datastore(process.env.CLOUD_API_KEY, GAME.UNIVERSE_ID),
+    messager: new Messager(process.env.CLOUD_API_KEY, GAME.UNIVERSE_ID)
 }
 
 _CLIENT.client.commands = new Collection();
@@ -25,5 +27,5 @@ _CLIENT.client.loadCommands = (_CLIENT, reload) => require("./handlers/commands"
 _CLIENT.client.loadEvents(_CLIENT, false);
 _CLIENT.client.loadCommands(_CLIENT, false);
 
-_CLIENT.client.login(CLIENT.TOKEN);
+_CLIENT.client.login(process.env.TOKEN);
  

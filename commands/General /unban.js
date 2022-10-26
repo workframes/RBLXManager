@@ -17,7 +17,7 @@ module.exports = {
         const userName = await userIdToName(args[0]);
         if(!userName) return await message.reply("Specified user doesn't exist.");
 
-        const success = await banData.SetAsync(GAME.DATASTORE_NAME, args[0], { banned: false, dateUpdated: String(Math.floor(Date.now() / 1000)), updatedBy: message.author.tag })
+        const success = await banData.SetAsync(GAME.DATASTORE_NAME, args[0], { banned: false, dateUpdated: String(Math.floor(Date.now() / 1000)), updatedBy: message.author.tag, reason: "User has been unbanned." })
         
         if (success) {
             const Embed = new EmbedBuilder()

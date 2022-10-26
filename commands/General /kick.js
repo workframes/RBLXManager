@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
-const { userIdToName } = require('../../util/helper');
+const { userIdToName, shallowClone } = require('../../util/helper');
 const { GAME } = require('../../config.json');
 
 module.exports = {
@@ -17,7 +17,18 @@ module.exports = {
         const userName = await userIdToName(args[0]);
         if(!userName) return await message.reply("Specified user doesn't exist.");
 
-        const messageSuccess = await messager.PostTopic("RBLXManager", JSON.stringify({ user: args[0], reason: GAME.KICK_MESSAGE }))
+        let reason;
+
+        if(args.length > 1){
+            reason = "";
+            shallowClone(args).slice(1).forEach((word) => {
+                reason += `${word} `
+            });
+        }
+
+        console.log((reason || GAME.BAN_MESSAGE))
+
+        const messageSuccess = await messager.PostTopic("RBLXManager", JSON.stringify({ user: args[0], reason: GAME.KICK_MESSAGE || reason }))
 
         if (messageSuccess) {
             const Embed = new EmbedBuilder()

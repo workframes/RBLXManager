@@ -31,8 +31,13 @@ const userIdToName = (userId) => {
     })
 }
 
+const shallowClone = (array) => {
+    return [...array];
+}
+
 module.exports = {
     getFiles,
     roleCheck,
-    userIdToName
+    userIdToName,
+    shallowClone
 }

@@ -23,7 +23,7 @@ module.exports = {
         const Embed = new EmbedBuilder()
                 .setColor(0x0099FF)
                 .setTitle(`Status of, **${userName || args[0]}**!`)
-                .setDescription(`**Banned:** \`${data.banned}\` \n **Status Updated On:** \`${new Date((data.dateUpdated) * 1000)}\` \n **Status Updated By:** \`${data.updatedBy}\``)
+                .setDescription(`**Banned:** \`${data.banned}\` \n **Reason:** \`${data.reason}\` \n **Status Updated On:** \`${new Date((data.dateUpdated) * 1000)}\` \n **Status Updated By:** \`${data.updatedBy}\``)
                 .setThumbnail(`https://www.roblox.com/headshot-thumbnail/image?userId=${args[0]}&width=420&height=420&format=png`)
                 .setTimestamp()
 
