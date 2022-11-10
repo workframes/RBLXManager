@@ -29,6 +29,19 @@ const userIdToName = (userId) => {
         return body.Username;
     })
     .catch(error => {
+        console.log(error, "fdsfsf")
+        return false
+    })
+}
+
+const userNameToID = (userName) => {
+    return superagent("GET", `api.roblox.com/users/get-by-username?username=${userName}`)
+    .then(response => {
+        const { body } = response;
+        return { id: body.Id, name: body.Username };
+    })
+    .catch(error => {
+        console.log(error, "fdsfsf")
         return false
     })
 }
@@ -63,11 +76,17 @@ const rolesSlashCommand = () => {
     return roleArray;
 }
 
+const isNum = (string) => {
+    return /\d/.test(string);
+}
+
 module.exports = {
     getFiles,
     roleCheck,
     userIdToName,
     universeSlashCommand,
     managersSlashCommand,
+    userNameToID,
+    isNum,
     rolesSlashCommand
 }

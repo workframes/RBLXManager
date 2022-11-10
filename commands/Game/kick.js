@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const BaseSlashCommand = require('../../util/BaseSlashCommand');
 const { GAME } = require('../../config.json');
-const { universeSlashCommand, userIdToName } = require('../../util/Helper');
+const { universeSlashCommand, userIdToName, userNameToID, isNum } = require('../../util/Helper');
 
 
 module.exports = class Kick extends BaseSlashCommand{
@@ -13,8 +13,19 @@ module.exports = class Kick extends BaseSlashCommand{
         const universe = client.universes[interaction.options.getString('universe')];
         const messager = universe.messager;
 
-        const userId = interaction.options.getInteger('userid');
-        const userName = await userIdToName(userId);
+        let userId = interaction.options.getString('user');
+        let userName;
+
+        if(isNum(userId)){
+            const data = await userNameToID(userId);
+
+            userId = data.id;
+            userName = data.name;
+        }
+        else{
+            userName = await userIdToName(userId);
+        }
+
         if(!userName) return await interaction.reply("Specified user doesn't exist.");
 
         const reason = interaction.options.getString('reason') ?? GAME.KICK_REASON;
@@ -56,9 +67,9 @@ module.exports = class Kick extends BaseSlashCommand{
                     .setRequired(true)
                     .addChoices(...currentUniverses)
             )
-            .addIntegerOption((option) => 
+            .addStringOption((option) => 
                 option
-                    .setName('userid')
+                    .setName('user')
                     .setDescription('User you would like to kick.')
                     .setRequired(true)
             )
