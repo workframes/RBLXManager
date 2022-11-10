@@ -1,5 +1,7 @@
 const fs = require('fs');
 const superagent = require('superagent');
+const { GAME } = require('../config.json');
+const { USERS, ROLES } = require('../managers.json');
 
 const getFiles = (path, ending) => {
     return fs.readdirSync(path).filter(f => f.endsWith(ending));
@@ -31,13 +33,41 @@ const userIdToName = (userId) => {
     })
 }
 
-const shallowClone = (array) => {
-    return [...array];
+const universeSlashCommand = () => {
+    let universes = []
+
+    for(let id in GAME.UNIVERSE_IDS){
+        universes.push({ name: GAME.UNIVERSE_IDS[id], value: id })
+    }
+
+    return universes;
+}
+
+const managersSlashCommand = () => {
+    let managerArray = [];
+
+    for(let manager of USERS){
+        managerArray.push({ name: manager, value: manager })
+    }
+
+    return managerArray;
+}
+
+const rolesSlashCommand = () => {
+    let roleArray = [];
+
+    for(let role of ROLES){
+        roleArray.push({ name: role, value: role })
+    }
+
+    return roleArray;
 }
 
 module.exports = {
     getFiles,
     roleCheck,
     userIdToName,
-    shallowClone
+    universeSlashCommand,
+    managersSlashCommand,
+    rolesSlashCommand
 }

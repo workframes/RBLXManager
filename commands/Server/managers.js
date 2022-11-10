@@ -1,25 +1,27 @@
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const DotJson = require('dot-json');
-const { EmbedBuilder } = require('discord.js')
+const BaseSlashCommand = require('../../util/BaseSlashCommand');
 const { GUILD_ID } = require('../../config.json');
 
-module.exports = {
-    name: "managers",
-    managerOnly: false,
-    run: async ({ client, message, args, banData, messager }) => {
+module.exports = class Managers extends BaseSlashCommand{
+    constructor(){
+        super('managers', true)
+    }
+
+    async run(client, interaction){
         let managers = new DotJson('managers.json');
 
         const ROLES = managers.get("ROLES");
         const USERS = managers.get("USERS");
-
-        const GUILD = client.guilds.cache.find(_guild => _guild.id === GUILD_ID);
+        const GUILD = interaction.guild;
 
         let rolesStr;
         let usersStr;
 
         if(USERS.length > 0){
             usersStr = "";
-            USERS.forEach((user) => {
-                const member = client.users.cache.find(_user => _user.id === user)
+            await USERS.forEach(async (user) => {
+                const member = await client.users.fetch(user);
                 if(!member) return
                 usersStr += `\`${member.tag}\` \n`
             })
@@ -27,8 +29,8 @@ module.exports = {
 
         if(ROLES.length > 0){
             rolesStr = "";
-            ROLES.forEach((role) => {
-                const guildRole = GUILD.roles.cache.find(_role => _role.id === role)
+            await ROLES.forEach(async (role) => {
+                const guildRole = await GUILD.roles.fetch(role);
                 if(!guildRole) return
                 rolesStr += `\`${guildRole.name}\` \n`
             })
@@ -42,7 +44,14 @@ module.exports = {
                 { name: "Users", value: usersStr || "`None`", inline: true },
                 { name: "Roles", value: rolesStr || "`None`", inline: true }
             )
-        
-        return await message.reply({ embeds: [ Embed ] });
+        console.lo
+        return await interaction.reply({ embeds: [ Embed ] });
+    }
+
+    getRaw(){
+        return new SlashCommandBuilder()
+            .setName(this.name)
+            .setDescription('Returns all the current managers.')
+            .toJSON();
     }
 }

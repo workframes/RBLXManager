@@ -38,7 +38,7 @@ function initEvents(_CLIENT){
         triggerEventHandler(_CLIENT, 'ready');
     });
 
-    client.on('messageCreate', (message) => {
-        triggerEventHandler(_CLIENT, 'messageCreate', message);
+    client.on('interactionCreate', (interaction) => {
+        triggerEventHandler(_CLIENT, 'interactionCreate', interaction);
     });
 };
