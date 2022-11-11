@@ -29,7 +29,6 @@ const userIdToName = (userId) => {
         return body.Username;
     })
     .catch(error => {
-        console.log(error, "fdsfsf")
         return false
     })
 }
@@ -41,7 +40,6 @@ const userNameToID = (userName) => {
         return { id: body.Id, name: body.Username };
     })
     .catch(error => {
-        console.log(error, "fdsfsf")
         return false
     })
 }

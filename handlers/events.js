@@ -1,4 +1,4 @@
-const { getFiles } = require('../util/helper');
+const { getFiles } = require('../util/Helper');
 
 module.exports = (_CLIENT, reload) => {
     const { client } = _CLIENT;

@@ -1,6 +1,6 @@
 const { Routes } = require('discord.js');
 const fs = require('fs');
-const { getFiles } = require('../util/helper');
+const { getFiles } = require('../util/Helper');
 const { CLIENT } = require('../config.json');
 
 module.exports = async (_CLIENT, reload) => {
