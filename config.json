@@ -1,14 +1,18 @@
 {
     "CLIENT": {
-        "APPLICATION_ID": "",
-        "GUILD_ID": ""
+        "APPLICATION_ID": "993996274867110019",
+        "GUILD_ID": "993997612472610927"
     },
      
     "GAME": {
         "DATASTORE_NAME": "RBLXManagerBans",
-        "UNIVERSE_IDS": {},
+        "UNIVERSE_IDS": {
+            "4045014903": "RBLX Manager",
+            "4061541317": "Place 2"
+        },
         "BAN_REASON": "Hello, you have been banned permentaly. If you think this was a mistake please contact a moderator to apeal.",
         "UNBAN_REASON": "The user has been unbanned",
         "KICK_REASON": "Hello, you have been kicked from the server."
     }
 }
+

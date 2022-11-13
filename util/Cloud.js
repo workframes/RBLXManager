@@ -1,17 +1,18 @@
 const superagent = require('superagent');
 
 class Datastore{
-    constructor(apiKey, universeId){
+    constructor(apiKey, universeId, datastoreName){
         this._apiKey = apiKey
         this._universeId = universeId
+        this._datastoreName = datastoreName
     }
 
-    async GetAsync(dataStoreName, Key){
+    async GetAsync(Key){
         const BASE_URL = `https://apis.roblox.com/datastores/v1/universes/${this._universeId}/standard-datastores/datastore/entries/entry`
         
         return superagent("GET", BASE_URL)
             .set({ "x-api-key": this._apiKey, "content-type": "application/json" })
-            .query(`datastoreName=${dataStoreName}&entryKey=${Key}&scope=global`)
+            .query(`datastoreName=${this._datastoreName}&entryKey=${Key}&scope=global`)
             .then(response => {
                 const { body } = response;
                 return body;
@@ -21,13 +22,13 @@ class Datastore{
             })
     }
 
-    async SetAsync(dataStoreName, Key, newValue){
+    async SetAsync(Key, newValue){
         const BASE_URL = `https://apis.roblox.com/datastores/v1/universes/${this._universeId}/standard-datastores/datastore/entries/entry`
 
         return superagent("POST", BASE_URL)
             .set({ "x-api-key": this._apiKey, "content-type": "application/json" })
             .send(newValue)
-            .query(`datastoreName=${dataStoreName}&entryKey=${Key}&scope=global`)
+            .query(`datastoreName=${this._datastoreName}&entryKey=${Key}&scope=global`)
             .then(response => {
                 const { body } = response;
                 return response.status == 200;

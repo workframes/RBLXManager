@@ -35,7 +35,7 @@ module.exports = class Unban extends BaseSlashCommand{
             reason: reason
         }
 
-        const success = await datastore.SetAsync(GAME.DATASTORE_NAME, userId, banData);
+        const success = await datastore.SetAsync(userId, banData);
 
         if(success){
             const Embed = new EmbedBuilder()

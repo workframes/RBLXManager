@@ -52,7 +52,7 @@ module.exports = class Ban extends BaseSlashCommand{
             }
         }
 
-        const success = await datastore.SetAsync(GAME.DATASTORE_NAME, userId, banData);
+        const success = await datastore.SetAsync(userId, banData);
         const messageSuccess = await messager.PostTopic("RBLXManager", JSON.stringify(messageData));
 
         if(success && messageSuccess){
@@ -66,7 +66,7 @@ module.exports = class Ban extends BaseSlashCommand{
             return await interaction.reply({ embeds: [Embed] });
         }
         else
-            return await message.reply(`Failed to ban **${userName} or failed to notify server!**`);  
+            return await interaction.reply(`Failed to ban **${userName} or failed to notify server!**`);  
     }
 
     getRaw(){

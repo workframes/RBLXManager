@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, Base } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');
 const BaseSlashCommand = require('../../util/BaseSlashCommand');
 const { universeSlashCommand } = require('../../util/Helper');
 

@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const BaseSlashCommand = require('../../util/BaseSlashCommand');
-const { GAME } = require('../../config.json');
 const { universeSlashCommand, userIdToName, userNameToID, isNum } = require('../../util/Helper');
 
 
@@ -28,7 +27,7 @@ module.exports = class IsBanned extends BaseSlashCommand{
 
         if(!userName) return await interaction.reply("Specified user doesn't exist.");
 
-        const banData = await datastore.GetAsync(GAME.DATASTORE_NAME, userId);
+        const banData = await datastore.GetAsync(userId);
         if(!banData) return await interaction.reply("Unabale to find a data entry for specified user or is not banned.");
         
         const Embed = new EmbedBuilder()

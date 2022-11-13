@@ -1,6 +1,4 @@
-const { Client, GatewayIntentBits,  Collection, Routes } = require('discord.js');
-const { CLIENT } = require('./config.json');
-const slashCommands = require('./handlers/slashCommands');
+const { Client, GatewayIntentBits,  Collection } = require('discord.js');
 
 require('better-logging')(console)
 require('dotenv').config()
@@ -16,7 +14,6 @@ const _CLIENT = {
         rest:{ version: "10" }
     }),
 }
-
 
 _CLIENT.client.commands = new Collection();
 _CLIENT.client.events = new Collection();

@@ -51,7 +51,7 @@ module.exports = class Kick extends BaseSlashCommand{
             return await interaction.reply({ embeds: [Embed] });
         }
         else
-            return await message.reply(`Failed to kick **${userName} or failed to notify server!**`);
+            return await interaction.reply(`Failed to kick **${userName}** or failed to notify server!`);
     }
 
     getRaw(){

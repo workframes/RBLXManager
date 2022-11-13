@@ -1,4 +1,3 @@
-const { GuildMember } = require('discord.js');
 const { roleCheck } = require('../util/helper');
 
 module.exports = {

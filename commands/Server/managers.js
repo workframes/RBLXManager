@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const DotJson = require('dot-json');
 const BaseSlashCommand = require('../../util/BaseSlashCommand');
-const { GUILD_ID } = require('../../config.json');
 
 module.exports = class Managers extends BaseSlashCommand{
     constructor(){
