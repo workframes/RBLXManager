@@ -1,4 +1,4 @@
-const { roleCheck } = require('../util/helper');
+const { roleCheck } = require('../util/Helper');
 
 module.exports = {
     name: 'interactionCreate',
