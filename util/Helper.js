@@ -75,7 +75,7 @@ const rolesSlashCommand = () => {
 }
 
 const isNum = (string) => {
-    return /\d/.test(string);
+    return isNaN(string)
 }
 
 module.exports = {
